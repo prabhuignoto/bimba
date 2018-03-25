@@ -1,39 +1,54 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
+import Icon from 'react-fontawesome';
 import Style from './style';
 import { withStyles } from '../../common/withStyles';
 import { SpreadClassNames } from '../../common/helpers';
 
-const Popup = (props) => {
-  const { styles, open } = props;
-  const {
-    popup, popupWrapper, popupControls, ok, cancel,
-  } = SpreadClassNames(styles);
-  const content = (() => {
-    if (open) {
-      return (
-        <div {...popup}>
-          <div {...popupWrapper}>
-            {props.children}
+class Popup extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  componentWillReceiveProps() {
+  }
+
+  render() {
+    const { styles, isOpen } = this.props;
+    const {
+      popup, popupWrapper, popupControls, popupHeader, popupTitle, closeButton,
+    } = SpreadClassNames(styles);
+    const content = (() => {
+      if (isOpen) {
+        return (
+          <div {...popup}>
+            <div {...popupWrapper}>
+              <header {...popupHeader}>
+                <span {...popupTitle}>Popup</span>
+                <button {...closeButton}>
+                  <Icon name="times-circle" />
+                </button>
+              </header>
+              {this.props.children}
+              <div {...popupControls} />
+            </div>
           </div>
-          <div {...popupControls}>
-            <button {...ok}>Ok</button>
-            <button {...cancel}>Cancel</button>
-          </div>
-        </div>
-      );
-    }
-    return null;
-  })();
-  return (
-    <Fragment>
-      {content}
-    </Fragment>
-  );
-};
+        );
+      }
+      return null;
+    })();
+    return (
+      <Fragment>
+        {content}
+      </Fragment>
+    );
+  }
+}
 
 Popup.propTypes = {
-  open: PropTypes.bool.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  closePopup: PropTypes.func.isRequired,
   styles: PropTypes.shape({
     popup: PropTypes.object.isRequired,
     popupWrapper: PropTypes.object.isRequired,

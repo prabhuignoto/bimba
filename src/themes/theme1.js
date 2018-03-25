@@ -7,5 +7,6 @@ export default {
     text: '#FEF6EB',
     standOut: '#C25B56',
     highlight: '#96C0CE',
+    blackRGBA: 'rgba(0,0,0,0.75)',
   },
 };

@@ -1,9 +1,10 @@
 import React from 'react';
-import injectSheet from 'react-jss';
 import PropTypes from 'prop-types';
-import Ionicon from 'react-ionicons';
+import Icon from 'react-fontawesome';
 import Styles from './styles';
 import Dropdown from '../dropdown';
+import { withStyles } from '../../common/withStyles';
+import { SpreadClassNames } from '../../common/helpers';
 
 class SearchBox extends React.Component {
   constructor(props) {
@@ -37,11 +38,13 @@ class SearchBox extends React.Component {
   }
 
   render() {
-    const { classes, engine, selectSearchEngine } = this.props;
-    const { search, input, button } = classes;
+    const { styles, engine, selectSearchEngine } = this.props;
+    const {
+      search, input, button, icon,
+    } = SpreadClassNames(styles);
     const placeHolder = `Image search powered by ${this.state.selectedValue}`;
     return (
-      <div className={search}>
+      <div {...search}>
         <Dropdown
           handleOpen={this.toggleMenu}
           handleSelection={selectSearchEngine}
@@ -49,9 +52,9 @@ class SearchBox extends React.Component {
           open={this.state.dropDownOpen}
           items={['google', 'bing']}
         />
-        <input type="search" className={input} placeholder={placeHolder} />
-        <button className={button}>
-          <Ionicon icon="md-arrow-round-forward" />
+        <input type="search" {...input} placeholder={placeHolder} />
+        <button {...button}>
+          <Icon name="arrow-right" {...icon} />
         </button>
       </div>
     );
@@ -63,4 +66,4 @@ SearchBox.propTypes = {
   selectSearchEngine: PropTypes.func.isRequired,
 };
 
-export default injectSheet(Styles)(SearchBox);
+export default withStyles(Styles)(SearchBox);

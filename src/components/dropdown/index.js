@@ -1,6 +1,6 @@
 import React from 'react';
-import Ionicon from 'react-ionicons';
 import PropTypes from 'prop-types';
+import Icon from 'react-fontawesome';
 import Style from './styles';
 import { withStyles } from '../../common/withStyles';
 import { SpreadClassNames } from '../../common/helpers';
@@ -49,7 +49,9 @@ const Dropdown = (props) => {
     >
       <div {...label}>
         <span {...selectedText}>{selectedValue}</span>
-        <i {...icon}><Ionicon icon="md-arrow-dropdown" /></i>
+        <div {...icon}>
+          <Icon name="angle-down" />
+        </div>
       </div>
       {typeof menu === 'function' ? menu() : null}
     </div>

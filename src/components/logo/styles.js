@@ -1,4 +1,4 @@
-export default theme => ({
+export default ({ color }) => ({
   logo: {
     display: 'flex',
     flexDirection: 'row',
@@ -10,7 +10,7 @@ export default theme => ({
   },
   txt: {
     paddingLeft: '8px',
-    color: theme.foreColor,
-    background: theme.primaryColor,
+    color: color.text,
+    background: color.primary,
   },
 });

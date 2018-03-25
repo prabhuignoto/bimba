@@ -3,6 +3,12 @@ export const selectSearchEngine = engine => ({
   engine,
 });
 
-export const resetSearchEngine = () => ({
-  type: 'RESET_SEARCH_ENGINE',
+export const openSettings = () => ({
+  type: 'OPEN_SETTINGS',
+  settingsOpen: true,
+});
+
+export const closeSettings = () => ({
+  type: 'CLOSE_SETTINGS',
+  settingsOpen: false,
 });

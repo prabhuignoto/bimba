@@ -45,8 +45,9 @@ export default ({ color }) => ({
   },
   icon: {
     marginLeft: 'auto',
-    marginRight: '10px',
+    marginRight: '15px',
     alignSelf: 'center',
+    fontSize: '24px',
   },
   selectedText: {
     width: '100%',

@@ -1,8 +1,9 @@
 import React from 'react';
-import injectSheet from 'react-jss';
 import PropTypes from 'prop-types';
-import Styles from './logo-styles';
+import Styles from './styles';
+import { withStyles } from '../../common/withStyles';
 
+// todo refactor to use spread classNames
 const Logo = ({ classes, image, text }) => {
   const imagePath = `/public/${image}.png`;
   const { logo, img, txt } = classes;
@@ -24,4 +25,4 @@ Logo.defaultProps = {
   classes: {},
 };
 
-export default injectSheet(Styles)(Logo);
+export default withStyles(Styles)(Logo);

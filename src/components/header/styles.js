@@ -1,7 +1,7 @@
-export default theme => ({
+export default ({ color }) => ({
   appHeader: {
     alignItems: 'center',
-    backgroundColor: theme.primaryColor,
+    background: color.backgroundAccent,
     display: 'flex',
     flexDirection: 'row',
     minHeight: '70px',

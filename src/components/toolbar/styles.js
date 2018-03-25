@@ -5,11 +5,11 @@ const flex = {
   justifyContent: 'center',
 };
 
-export default theme => ({
+export default ({ color }) => ({
   nav: Object.assign(flex, {
     marginLeft: 'Auto',
-    width: '200px',
-    marginRight: '20px',
+    minWidth: '55px',
+    marginRight: '25px',
   }),
   list: Object.assign(flex, {
     listStyle: 'none',
@@ -22,8 +22,14 @@ export default theme => ({
     border: 'none',
     background: 'none',
     cursor: 'pointer',
+    color: color.primary,
+    ':hover': {
+      color: color.secondary,
+    },
   },
   content: Object.assign(flex, {}),
-  icon: {},
+  icon: {
+    fontSize: '36px',
+  },
   text: {},
 });
