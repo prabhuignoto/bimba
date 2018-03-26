@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Styles from './styles';
 import { withStyles } from '../../common/withStyles';
 
-// todo refactor to use spread classNames
+// TODO:10 refactor to use spread classNames
 const Logo = ({ classes, image, text }) => {
   const imagePath = `/public/${image}.png`;
   const { logo, img, txt } = classes;
@@ -21,6 +21,7 @@ Logo.propTypes = {
   classes: PropTypes.objectOf(PropTypes.string),
 };
 
+// TODO:0 configure propTypes
 Logo.defaultProps = {
   classes: {},
 };

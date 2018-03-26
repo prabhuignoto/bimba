@@ -15,6 +15,7 @@ class SearchBox extends React.Component {
     };
     this.toggleMenu = this.toggleMenu.bind(this);
     this.handleSelection = this.handleSelection.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -37,6 +38,13 @@ class SearchBox extends React.Component {
     });
   }
 
+  handleSearch(ev) {
+    if (ev.which === 13) {
+      const { target: { value: text } } = ev;
+      this.props.handleSearch(text);
+    }
+  }
+
   render() {
     const { styles, engine, selectSearchEngine } = this.props;
     const {
@@ -52,7 +60,12 @@ class SearchBox extends React.Component {
           open={this.state.dropDownOpen}
           items={['google', 'bing']}
         />
-        <input type="search" {...input} placeholder={placeHolder} />
+        <input
+          type="search"
+          {...input}
+          placeholder={placeHolder}
+          onKeyPress={this.handleSearch}
+        />
         <button {...button}>
           <Icon name="arrow-right" {...icon} />
         </button>
@@ -64,6 +77,7 @@ class SearchBox extends React.Component {
 SearchBox.propTypes = {
   engine: PropTypes.string.isRequired,
   selectSearchEngine: PropTypes.func.isRequired,
+  handleSearch: PropTypes.func.isRequired,
 };
 
 export default withStyles(Styles)(SearchBox);

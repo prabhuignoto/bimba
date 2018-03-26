@@ -54,6 +54,11 @@ Popup.propTypes = {
     popupWrapper: PropTypes.object.isRequired,
     popupControls: PropTypes.object.isRequired,
   }).isRequired,
+  children: PropTypes.node,
+};
+
+Popup.defaultProps = {
+  children: [],
 };
 
 export default withStyles(Style)(Popup);

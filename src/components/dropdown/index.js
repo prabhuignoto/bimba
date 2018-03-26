@@ -64,7 +64,14 @@ Dropdown.propTypes = {
   handleSelection: PropTypes.func.isRequired,
   selectedValue: PropTypes.string.isRequired,
   items: PropTypes.arrayOf(PropTypes.string),
-  styles: PropTypes.object.isRequired,
+  styles: PropTypes.shape({
+    dropdown: PropTypes.object.isRequired,
+    label: PropTypes.object.isRequired,
+    list: PropTypes.object.isRequired,
+    listItem: PropTypes.object.isRequired,
+    icon: PropTypes.object.isRequired,
+    selectedText: PropTypes.object.isRequired,
+  }).isRequired,
 };
 
 Dropdown.defaultProps = {
@@ -72,4 +79,3 @@ Dropdown.defaultProps = {
 };
 
 export default withStyles(Style)(Dropdown);
-// export default injectSheet(Style)(Dropdown);
