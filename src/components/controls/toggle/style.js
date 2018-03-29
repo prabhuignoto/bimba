@@ -5,6 +5,9 @@ export default ({ color }) => ({
     padding: 0,
     margin: '5px',
     cursor: 'pointer',
+    ':focus': {
+      outline: `1px dotted ${color.highlight}`,
+    },
   },
   toggleWrapper: {
     width: '100%',

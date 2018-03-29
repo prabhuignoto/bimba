@@ -30,9 +30,19 @@ class Toggle extends React.Component {
       toggleWrapper = css(styles.toggleWrapper, styles.wrapperOff);
     }
     return (
-      <div {...css(styles.toggle)} onClick={this.handleToggle}>
+      <div
+        {...css(styles.toggle)}
+        role="button"
+        tabIndex="0"
+        onClick={this.handleToggle}
+        onKeyPress={(ev) => {
+          if (ev.which === 13) {
+            this.handleToggle();
+          }
+        }}
+      >
         <div {...toggleWrapper}>
-          <button {...toggleButton} />
+          <button {...toggleButton} tabIndex="-1" />
         </div>
       </div>
     );
