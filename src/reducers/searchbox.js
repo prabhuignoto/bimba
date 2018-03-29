@@ -17,13 +17,19 @@ export default (state = { engine: 'google' }, action) => {
       return Object.assign(
         {},
         state,
-        { searchTerm: action.searchTerm },
+        { searchTerm: action.searchTerm, searchInProgress: true },
       );
     case 'COMPLETE_SEARCH':
       return Object.assign(
         {},
         state,
-        { results: action.results },
+        {
+          results: action.results.map(x => ({
+            thumbnailURL: x.thumbnailUrl,
+            name: x.name,
+          })),
+          searchInProgress: false,
+        },
       );
     default: return state;
   }
