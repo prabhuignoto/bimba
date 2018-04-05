@@ -26,9 +26,26 @@ export default (state = { engine: 'google' }, action) => {
         {
           results: action.results.map(x => ({
             thumbnailURL: x.thumbnailUrl,
+            contentURL: x.contentUrl,
             name: x.name,
           })),
           searchInProgress: false,
+        },
+      );
+    case 'CHANGE_THUMBNAIL_SIZE':
+      return Object.assign(
+        {},
+        state,
+        {
+          thumbnailSize: action.size,
+        },
+      );
+    case 'THUMBNAIL_CLICKED':
+      return Object.assign(
+        {},
+        state,
+        {
+          activeImage: action.image,
         },
       );
     default: return state;

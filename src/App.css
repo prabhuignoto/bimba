@@ -31,3 +31,7 @@ html, body {
   height: 100%;
   background: #000;
 }
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}

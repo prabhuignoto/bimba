@@ -6,11 +6,8 @@ export default ({ color }) => ({
     borderRadius: '2px',
     cursor: 'pointer',
     display: 'flex',
-    height: '230px',
     justifyContent: 'center',
     margin: '10px',
-    transition: 'all .5s ease',
-    width: '230px',
     ':hover': {
       background: 'rgba(0,0,0,0.95)',
       boShadow: '0 0 0 #000',
@@ -27,5 +24,17 @@ export default ({ color }) => ({
   img: {
     maxHeight: '100%',
     maxWidth: '100%',
+  },
+  x1: {
+    height: '200px',
+    width: '200px',
+  },
+  x2: {
+    height: '300px',
+    width: '300px',
+  },
+  x3: {
+    height: '350px',
+    width: '350px',
   },
 });

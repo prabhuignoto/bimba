@@ -1,17 +1,16 @@
 export default ({ color }) => ({
-  gallery: {
+  options: {
     background: '#000',
-    width: '100%',
-    height: '100%',
+    color: '#fff',
+    height: '100px',
   },
-  galleryWrapper: {
+  optionsWrapper: {
     alignItems: 'center',
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    transition: 'all 3s ease',
-    justifyContent: 'center',
-  },
-  searchInProgress: {
+    height: '100%',
+    justifyContent: 'space-evenly',
+    marginLeft: '20px',
   },
 });

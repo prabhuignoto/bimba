@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Style from './style';
 import { withStyles, css } from '../../../common/withStyles';
-import Thumbnail from '../thumbnail';
+import Thumbnail from '../../../containers/Thumbnail';
+import ImageViewer from '../../../containers/ImageViewer';
+import Options from '../../options';
 
 class Gallery extends React.Component {
   constructor(props) {
@@ -22,13 +24,17 @@ class Gallery extends React.Component {
   render() {
     const { styles } = this.props;
     let galleryClass = null;
+
     if (this.state.searchInProgress) {
       galleryClass = css(styles.gallery, styles.searchInProgress);
     } else {
       galleryClass = css(styles.gallery);
     }
+
     return (
       <div {...galleryClass}>
+        <Options />
+        <ImageViewer />
         <div {...css(styles.galleryWrapper)}>
           {this.state.items.map((item) => {
             const props = Object.assign({}, item, {

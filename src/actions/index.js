@@ -17,6 +17,11 @@ export const closeSettings = () => ({
   settingsOpen: false,
 });
 
+export const changeThumbnailSize = size => ({
+  type: 'CHANGE_THUMBNAIL_SIZE',
+  size,
+});
+
 export const handleSearch = searchTerm => (dispatch) => {
   dispatch({
     type: 'START_SEARCH',
@@ -37,3 +42,8 @@ export const handleSearch = searchTerm => (dispatch) => {
       });
     });
 };
+
+export const clickThumbnail = image => ({
+  type: 'THUMBNAIL_CLICKED',
+  image,
+});

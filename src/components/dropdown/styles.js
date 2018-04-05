@@ -40,7 +40,7 @@ export default ({ color }) => ({
     textTransform: 'capitalize',
     ':hover': {
       background: color.highlight,
-      color: color.primary,
+      // color: color.primary,
     },
   },
   icon: {

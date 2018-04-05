@@ -44,6 +44,7 @@ class Toggle extends React.Component {
         <div {...toggleWrapper}>
           <button {...toggleButton} tabIndex="-1" />
         </div>
+        <span {...css(styles.label)}>{this.props.label}</span>
       </div>
     );
   }
@@ -56,6 +57,7 @@ Toggle.propTypes = {
     button: PropTypes.object,
   }).isRequired,
   toggleOn: PropTypes.bool,
+  label: PropTypes.string.isRequired,
 };
 
 Toggle.defaultProps = {
