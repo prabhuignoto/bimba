@@ -1,6 +1,7 @@
 export default ({ color }) => ({
   toggle: {
-    height: '28px',
+    height: '20px',
+    width: '40px',
     padding: 0,
     margin: '5px',
     cursor: 'pointer',
@@ -9,8 +10,8 @@ export default ({ color }) => ({
     outline: 'none',
   },
   toggleWrapper: {
-    width: '55px',
     height: '100%',
+    minWidth: '100%',
     position: 'relative',
     borderRadius: '22px',
     transition: 'all 0.25s ease',
@@ -48,7 +49,7 @@ export default ({ color }) => ({
     whiteSpace: 'nowrap',
     marginLeft: '10px',
     userSelect: 'none',
-    fontSize: '1.25em',
+    fontSize: '1em',
     fontWeight: 'bold',
   },
 });

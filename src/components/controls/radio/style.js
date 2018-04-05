@@ -4,6 +4,9 @@ export default ({color}) => ({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+    padding: '4px 6px',
+    margin: '4px',
+    height: '50px',
   },
   radioWrapper: {
     display: 'flex',
@@ -16,7 +19,7 @@ export default ({color}) => ({
     whiteSpace: 'nowrap',
     marginRight: '15px',
     fontWeight: 'bold',
-    fontSize: '1.25em',
+    fontSize: '1em',
     color: color.primary,
   },
 });

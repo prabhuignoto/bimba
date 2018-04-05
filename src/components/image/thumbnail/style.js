@@ -26,15 +26,15 @@ export default ({ color }) => ({
     maxWidth: '100%',
   },
   x1: {
+    height: '150px',
+    width: '150px',
+  },
+  x2: {
     height: '200px',
     width: '200px',
   },
-  x2: {
-    height: '300px',
-    width: '300px',
-  },
   x3: {
-    height: '350px',
-    width: '350px',
+    height: '250px',
+    width: '250px',
   },
 });

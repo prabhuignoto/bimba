@@ -3,7 +3,7 @@ import Thumbnail from '../components/image/thumbnail';
 import { clickThumbnail } from '../actions';
 
 const mapStateToProps = state => ({
-  size: state.thumbnailSize,
+  size: state.Thumbnail.size,
 });
 
 const mapDispatchToProps = dispatch => ({

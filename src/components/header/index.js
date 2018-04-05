@@ -7,6 +7,7 @@ import Popup from '../../containers/settings-popup';
 import { withStyles } from '../../common/withStyles';
 import { SpreadClassNames } from '../../common/helpers';
 import HeaderStyles from './styles';
+import Options from '../options';
 
 const Header = ({
   styles, engine, selectSearchEngine, settingsOpen, openSettings,
@@ -16,6 +17,7 @@ const Header = ({
     <header {...appHeader}>
       <Logo text="Bimba" image="logo" />
       <SearchBox selectSearchEngine={selectSearchEngine} engine={engine} />
+      <Options />
       <Toolbar items={[{ name: 'settings', icon: 'cog' }]} openSettings={openSettings} />
       <Popup isOpen={settingsOpen} />
     </header>);

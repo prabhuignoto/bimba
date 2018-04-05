@@ -4,7 +4,6 @@ import Style from './style';
 import { withStyles, css } from '../../../common/withStyles';
 import Thumbnail from '../../../containers/Thumbnail';
 import ImageViewer from '../../../containers/ImageViewer';
-import Options from '../../options';
 
 class Gallery extends React.Component {
   constructor(props) {
@@ -33,7 +32,6 @@ class Gallery extends React.Component {
 
     return (
       <div {...galleryClass}>
-        <Options />
         <ImageViewer />
         <div {...css(styles.galleryWrapper)}>
           {this.state.items.map((item) => {

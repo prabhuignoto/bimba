@@ -53,22 +53,20 @@ class SearchBox extends React.Component {
     const placeHolder = `Image search powered by ${this.state.selectedValue}`;
     return (
       <div {...search}>
-        <Dropdown
+        {/* <Dropdown
           handleOpen={this.toggleMenu}
           handleSelection={selectSearchEngine}
           selectedValue={this.state.selectedValue}
           open={this.state.dropDownOpen}
           items={['google', 'bing']}
-        />
+        /> */}
         <input
           type="search"
           {...input}
           placeholder={placeHolder}
           onKeyPress={this.handleSearch}
         />
-        <button {...button}>
-          <Icon name="arrow-right" {...icon} />
-        </button>
+        <button {...button} />
       </div>
     );
   }
