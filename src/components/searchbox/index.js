@@ -1,34 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Icon from 'react-fontawesome';
+import Icon from 'react-ionicons';
 import Styles from './styles';
-import Dropdown from '../dropdown';
-import { withStyles } from '../../common/withStyles';
-import { SpreadClassNames } from '../../common/helpers';
+import { withStyles, css } from '../../common/withStyles';
+import Toolbar from '../../components/toolbar';
+import Options from '../../containers/options';
 
 class SearchBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dropDownOpen: false,
+      showOptions: false,
       selectedValue: '',
+      imageType: props.imageType,
+      freshness: props.freshness,
+      size: props.size,
+      safeSearch: props.safeSearch,
     };
-    this.toggleMenu = this.toggleMenu.bind(this);
+    this.toggleOptions = this.toggleOptions.bind(this);
     this.handleSelection = this.handleSelection.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.engine !== this.state.selectedValue) {
-      this.setState({
-        selectedValue: nextProps.engine,
-      });
-    }
+    this.setState({
+      imageType: nextProps.imageType,
+      freshness: nextProps.freshness,
+      size: nextProps.size,
+      safeSearch: nextProps.safeSearch,
+    });
   }
 
-  toggleMenu() {
+  toggleOptions() {
     this.setState({
-      dropDownOpen: !this.state.dropDownOpen,
+      showOptions: !this.state.showOptions,
     });
   }
 
@@ -41,32 +46,35 @@ class SearchBox extends React.Component {
   handleSearch(ev) {
     if (ev.which === 13) {
       const { target: { value: text } } = ev;
-      this.props.handleSearch(text);
+      const {
+        imageType, freshness, size, safeSearch,
+      } = this.state;
+      this.props.handleSearch(text, safeSearch, imageType, freshness, size);
+      if (this.state.showOptions) {
+        this.setState({
+          showOptions: false,
+        });
+      }
     }
   }
 
   render() {
     const { styles, engine, selectSearchEngine } = this.props;
-    const {
-      search, input, button, icon,
-    } = SpreadClassNames(styles);
     const placeHolder = `Image search powered by ${this.state.selectedValue}`;
+    const titleText = `Searching for ${this.state.imageType},with size ${this.state.size}`;
     return (
-      <div {...search}>
-        {/* <Dropdown
-          handleOpen={this.toggleMenu}
-          handleSelection={selectSearchEngine}
-          selectedValue={this.state.selectedValue}
-          open={this.state.dropDownOpen}
-          items={['google', 'bing']}
-        /> */}
+      <div {...css(styles.search)}>
         <input
-          type="search"
-          {...input}
+          type="text"
+          {...css(styles.input)}
           placeholder={placeHolder}
           onKeyPress={this.handleSearch}
+          title={titleText}
         />
-        <button {...button} />
+        <button {...css(styles.button, styles.cog)} onClick={this.toggleOptions}>
+          <Icon icon="md-settings" color="#0a2231" fontSize="1em" />
+        </button>
+        <Options show={this.state.showOptions} closeOptions={this.toggleOptions} />
       </div>
     );
   }
@@ -76,6 +84,10 @@ SearchBox.propTypes = {
   engine: PropTypes.string.isRequired,
   selectSearchEngine: PropTypes.func.isRequired,
   handleSearch: PropTypes.func.isRequired,
+  imageType: PropTypes.string,
+  size: PropTypes.string,
+  freshness: PropTypes.string,
+  safeSearch: PropTypes.bool,
 };
 
 export default withStyles(Styles)(SearchBox);

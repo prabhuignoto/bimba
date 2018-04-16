@@ -32,7 +32,9 @@ class Gallery extends React.Component {
 
     return (
       <div {...galleryClass}>
-        <ImageViewer />
+        <div {...css(styles.viewerWrapper)}>
+          <ImageViewer />
+        </div>
         <div {...css(styles.galleryWrapper)}>
           {this.state.items.map((item) => {
             const props = Object.assign({}, item, {

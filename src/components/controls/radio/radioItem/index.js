@@ -4,10 +4,10 @@ import { css, withStyles } from '../../../../common/withStyles';
 import Style from './style';
 
 const RadioItem = ({
-  styles, label, name, value, onChange, selectedValue
+  styles, label, name, onChange, selectedValue
 }) => {
-  const id = `radio_${value}`;
-  const checked = selectedValue === value;
+  const id = `radio_${name}`;
+  const checked = selectedValue === name;
   let radioItemClass = null;
   if (checked) {
     radioItemClass = css(styles.radioItem, styles.radioOn);
@@ -18,7 +18,7 @@ const RadioItem = ({
     <div {...radioItemClass}>
       <input
         type="radio"
-        value={value}
+        value={name}
         name={name}
         id={id}
         checked={checked}
@@ -47,7 +47,6 @@ RadioItem.propTypes = {
   }).isRequired,
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   selectedValue: PropTypes.string.isRequired,
 };

@@ -3,6 +3,9 @@ export default ({ color }) => ({
     background: '#000',
     width: '100%',
     height: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
   },
   galleryWrapper: {
     alignItems: 'center',
@@ -10,8 +13,11 @@ export default ({ color }) => ({
     flexDirection: 'row',
     flexWrap: 'wrap',
     transition: 'all 3s ease',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
   },
   searchInProgress: {
+  },
+  viewerWrapper: {
+    display: 'none',
   },
 });

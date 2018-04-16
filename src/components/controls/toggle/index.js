@@ -14,9 +14,13 @@ class Toggle extends React.Component {
   }
 
   handleToggle() {
+    const toggleState = !this.state.toggleOn
     this.setState({
-      toggleOn: !this.state.toggleOn,
+      toggleOn: toggleState,
     });
+    if (this.props.onChange) {
+      this.props.onChange(toggleState);
+    }
   }
 
   render() {
@@ -58,6 +62,7 @@ Toggle.propTypes = {
   }).isRequired,
   toggleOn: PropTypes.bool,
   label: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 Toggle.defaultProps = {

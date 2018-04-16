@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Styles from './styles';
-import { withStyles } from '../../common/withStyles';
+import { withStyles, css } from '../../common/withStyles';
 
 // TODO:10 refactor to use spread classNames
-const Logo = ({ classes, image, text }) => {
+const Logo = ({ styles, image, text }) => {
   const imagePath = `/public/${image}.png`;
-  const { logo, img, txt } = classes;
+  const { logo, img, txt } = styles;
 
   return (
-    <div className={logo}>
-      <img src={imagePath} alt="app logo" className={img} />
-      <span className={txt}>{text}</span>
+    <div {...css(logo)}>
+      {/*}<img src={imagePath} alt="app logo" className={img} />*/}
+      <span {...css(txt)}>{text}</span>
     </div>);
 };
 

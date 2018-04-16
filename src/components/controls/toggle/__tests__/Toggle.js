@@ -1,8 +1,8 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount, render } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 
-import Toggle from '../../../components/controls/toggle';
+import Toggle from '../index';
 
 describe('Toggle', () => {
   it('render correctly', () => {

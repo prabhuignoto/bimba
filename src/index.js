@@ -17,7 +17,7 @@ const store = createStore(
     results: []
   },
   compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()),
-  // compose(window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()),
+  compose(applyMiddleware(thunk)),
 );
 
 ReactDOM.render(

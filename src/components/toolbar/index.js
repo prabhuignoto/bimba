@@ -1,38 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from 'react-fontawesome';
-import { withStyles } from '../../common/withStyles';
-import { SpreadClassNames } from '../../common/helpers';
+import { withStyles, css } from '../../common/withStyles';
 import ToolBarStyles from './styles';
 
-const Toolbar = ({ styles, items, openSettings }) => {
-  const {
-    nav,
-    list,
-    listItem,
-    button,
-    icon,
-  } = SpreadClassNames(styles);
-
-  return (
-    <nav {...nav}>
-      <ul {...list}>
-        {items.map(item => (
-          <li {...listItem}>
-            <button
-              tabIndex="0"
-              {...button}
-              title={item.name}
-              onClick={() => openSettings()}
-            >
-              <Icon name={item.icon} {...icon} />
-            </button>
-          </li>))
-        }
-      </ul>
-    </nav>
-  );
-};
+const Toolbar = ({ styles, items, openSettings }) => (
+  <nav {...css(styles.nav)}>
+    <ul {...css(styles.list)}>
+      {items.map(item => (
+        <li {...css(styles.listItem)}>
+          <button
+            tabIndex="0"
+            {...css(styles.button)}
+            title={item.name}
+            onClick={() => openSettings()}
+          >
+            <Icon name={item.icon} {...css(styles.icon)} />
+          </button>
+        </li>))
+      }
+    </ul>
+  </nav>
+);
 
 Toolbar.propTypes = {
   styles: PropTypes.shape({

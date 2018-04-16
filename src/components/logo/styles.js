@@ -9,8 +9,9 @@ export default ({ color }) => ({
     paddingLeft: '10px',
   },
   txt: {
-    paddingLeft: '8px',
-    color: color.text,
-    background: color.primary,
+    paddingLeft: '15px',
+    color: '#fff',
+    textTransform: 'uppercase',
+    fontSize: '2em',
   },
 });

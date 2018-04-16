@@ -22,12 +22,26 @@ export const changeThumbnailSize = size => ({
   size,
 });
 
-export const handleSearch = searchTerm => (dispatch) => {
+export const handleSearch = (
+  searchTerm,
+  safeSearch,
+  imageType,
+  freshness,
+  size,
+) => (dispatch) => {
   dispatch({
     type: 'START_SEARCH',
     searchTerm,
   });
-  const request = fetch(`${URL}?q=${searchTerm}`, {
+  const queryString = [
+    `${URL}?`,
+    `q=${searchTerm}&`,
+    `safeSearch=${safeSearch ? 'Strict' : 'Off'}`,
+    `&freshness=${freshness}`,
+    `&size=${size}`,
+  ].join('');
+
+  const request = fetch(queryString, {
     headers: {
       'Ocp-Apim-Subscription-Key': 'b7fd25deb2e94a7e85674206b6137417',
       'content-type': 'application/json',
@@ -46,4 +60,24 @@ export const handleSearch = searchTerm => (dispatch) => {
 export const clickThumbnail = image => ({
   type: 'THUMBNAIL_CLICKED',
   image,
+});
+
+export const changeSize = size => ({
+  type: 'CHANGE_QUALITY',
+  size,
+});
+
+export const changeImagetype = imageType => ({
+  type: 'CHANGE_IMAGE_TYPE',
+  imageType,
+});
+
+export const changeFreshness = freshness => ({
+  type: 'CHANGE_FRESHNESS',
+  freshness,
+});
+
+export const toggleSafeSearch = mode => ({
+  type: 'TOGGLE_SAFE_SEARCH',
+  mode,
 });

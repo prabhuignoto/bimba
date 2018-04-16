@@ -1,81 +1,123 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Icon from 'react-ionicons';
 import { withStyles, css } from '../../common/withStyles';
 import Toggle from '../controls/toggle';
 import Radio from '../controls/radio';
-import ThumbnailSizeRadio from '../../containers/ThumbnailSizeRadio';
+import Dropdown from '../dropdown';
 import Style from './style';
 
 class Options extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      openOptions: this.props.openOptions,
+      show: this.props.show,
     };
+    this.optionRef = React.createRef();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.state.show !== nextProps.show) {
+      this.setState({
+        show: nextProps.show,
+      });
+    }
+  }
+
+  componentDidUpdate() {
+    this.optionRef.current.focus();
   }
 
   render() {
     const { styles } = this.props;
     let openClass = null;
-    if (this.state.openOptions) {
-      openClass = css(styles.options, styles.optionsOpen);
+    let screen = null;
+    if (this.state.show) {
+      openClass = css(styles.options, styles.open);
+      screen = <div {...css(styles.screen)} />;
     } else {
-      openClass = css(styles.options);
+      openClass = css(styles.options, styles.close);
     }
     return (
-      <div {...openClass}>
+      <div
+        {...openClass}
+        tabIndex="-1"
+        role="dialog"
+        ref={this.optionRef}
+        onKeyUp={(ev) => {
+          if (ev.which === 27) {
+            this.props.closeOptions();
+          }
+        }}
+      >
+        {screen}
         <div {...css(styles.optionsWrapper)}>
-          <Toggle label="Safe Search" />
-          <Radio
-            name="quality"
-            label="Quality"
-            items={[
-            {
-              label: 'High',
-              value: 'high',
-            },
-            {
-              label: 'Medium',
-              value: 'medium',
-            },
-            {
-              label: 'Low',
-              value: 'low',
-            },
-          ]}
-          />
-          <ThumbnailSizeRadio
-            name="thumbnailSize"
-            label="Thumbnails"
-            items={[
-            {
-              label: '1x',
-              value: '1x',
-            },
-            {
-              label: '2x',
-              value: '2x',
-            },
-            {
-              label: '3x',
-              value: '3x',
-            },
-          ]}
-          />
-          <Radio
-            name="type"
-            label="Type"
-            items={[
-            {
-              label: 'Photo',
-              value: 'photo',
-            },
-            {
-              label: 'GIF',
-              value: 'gif',
-            }
-          ]}
-          />
+          <header {...css(styles.header)}>
+            <h2 {...css(styles.h2)}>
+              Options
+            </h2>
+            <button
+              {...css(styles.btnClose)}
+              onClick={() => {
+              this.props.closeOptions();
+              }}
+            >
+              <Icon icon="md-close" color="#fff" />
+            </button>
+          </header>
+          <table {...css(styles.table)}>
+            <tr {...css(styles.row)}>
+              <td {...css(styles.column)} style={{ width: '25%', paddingLeft: '20px' }}>
+                <Toggle label="Safe Search" onChange={this.props.toggleSafeSearch} />
+              </td>
+              <td {...css(styles.column)} style={{ width: '32%' }}>
+                <Dropdown
+                  items={['Photo', 'AnimatedGif']}
+                  label="Type"
+                  onChange={this.props.changeImageType}
+                />
+              </td>
+              <td {...css(styles.column)} style={{ width: '32%' }}>
+                <Dropdown
+                  items={['Day', 'Week', 'Month']}
+                  label="Fresh"
+                  onChange={this.props.changeFreshness}
+                />
+              </td>
+            </tr>
+            <tr {...css(styles.row)}>
+              <td style={{ width: '100%' }} colSpan="3">
+                <table {...css(styles.table2)}>
+                  <tr {...css(styles.row)}>
+                    <td {...css(styles.column)} style={{ width: '35%' }}>
+                      <Dropdown
+                        items={['Small', 'Medium', 'Large', 'Wallpaper', 'All']}
+                        label="Size"
+                        onChange={this.props.changeSize}
+                      />
+                    </td>
+                    <td style={{ width: '15%' }} />
+                    <td {...css(styles.column)} style={{ width: '50%' }}>
+                      <Radio
+                        name="content_type"
+                        label="Content type"
+                        items={[
+                          {
+                            name: 'face',
+                            label: 'Face',
+                          },
+                          {
+                            name: 'potrait',
+                            label: 'Potrait',
+                          },
+                        ]}
+                      />
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
         </div>
       </div>
     );
@@ -83,7 +125,12 @@ class Options extends Component {
 }
 
 Options.propTypes = {
-  openOptions: PropTypes.bool,
+  show: PropTypes.bool,
+  changeSize: PropTypes.func.isRequired,
+  changeImageType: PropTypes.func.isRequired,
+  changeFreshness: PropTypes.func.isRequired,
+  toggleSafeSearch: PropTypes.func.isRequired,
+  closeOptions: PropTypes.func.isRequired,
   styles: PropTypes.shape({
     options: PropTypes.object,
     optionsWrapper: PropTypes.object,
@@ -91,7 +138,7 @@ Options.propTypes = {
 };
 
 Options.defaultProps = {
-  openOptions: false,
+  show: false,
 };
 
 export default withStyles(Style)(Options);

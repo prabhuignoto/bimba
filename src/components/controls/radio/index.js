@@ -17,19 +17,22 @@ class RadioGroup extends Component {
     this.setState({
       selected: value,
     });
-    this.props.handleChange(value);
+    if (this.props.handleChange) {
+      this.props.handleChange(value);
+    }
   }
 
   render() {
-    const { name, styles, label } = this.props;
+    const {
+      styles, label, items,
+    } = this.props;
     return (
       <div {...css(styles.radio)}>
         <span {...css(styles.label)}>{label}</span>
         <div {...css(styles.radioWrapper)}>
-          {this.props.items.map(x => (
+          {items.map(x => (
             <Radio
               styles={styles}
-              name={name}
               {...x}
               onChange={this.handleChange}
               selectedValue={this.state.selected}
@@ -42,7 +45,7 @@ class RadioGroup extends Component {
 }
 
 RadioGroup.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.string).isRequired,
+  items: PropTypes.arrayOf(PropTypes.string),
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   styles: PropTypes.shape({
@@ -51,6 +54,10 @@ RadioGroup.propTypes = {
     radioItem: PropTypes.object.isRequired,
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
+};
+
+RadioGroup.defaultProps = {
+  items: [],
 };
 
 export default withStyles(Style)(RadioGroup);

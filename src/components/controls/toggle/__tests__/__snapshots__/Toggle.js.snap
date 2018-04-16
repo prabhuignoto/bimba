@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toggle render correctly 1`] = `
+<Toggle
+  css={[Function]}
+  label="test"
+  styles={
+    Object {
+      "buttonOff": Object {
+        "_definition": Object {
+          "background": "#c6c6c6",
+          "left": 4,
+        },
+        "_len": 33,
+        "_name": "buttonOff_fegc8",
+      },
+      "buttonOn": Object {
+        "_definition": Object {
+          "background": "#33abf9",
+          "right": 4,
+        },
+        "_len": 34,
+        "_name": "buttonOn_1movikq",
+      },
+      "input": Object {
+        "_definition": Object {
+          "display": "block",
+        },
+        "_len": 19,
+        "_name": "input_uhlm2",
+      },
+      "label": Object {
+        "_definition": Object {
+          "fontSize": "1em",
+          "fontWeight": "bold",
+          "marginLeft": "10px",
+          "userSelect": "none",
+          "whiteSpace": "nowrap",
+        },
+        "_len": 100,
+        "_name": "label_eg96fd",
+      },
+      "toggle": Object {
+        "_definition": Object {
+          "alignItems": "center",
+          "cursor": "pointer",
+          "display": "flex",
+          "height": "20px",
+          "margin": "5px",
+          "outline": "none",
+          "padding": 0,
+          "width": "40px",
+        },
+        "_len": 134,
+        "_name": "toggle_1825vo",
+      },
+      "toggleButton": Object {
+        "_definition": Object {
+          "border": "none",
+          "borderRadius": "50%",
+          "boxShadow": "1px 1px 1px rgba(0,0,0, 0.25)",
+          "height": "75%",
+          "pointerEvents": "none",
+          "position": "absolute",
+          "top": "50%",
+          "transform": "translateY(-50%)",
+          "width": "40%",
+        },
+        "_len": 199,
+        "_name": "toggleButton_ph04zc",
+      },
+      "toggleWrapper": Object {
+        "_definition": Object {
+          "border": "2px solid #c6c6c6",
+          "borderRadius": "22px",
+          "borderRightRadius": "50%",
+          "height": "100%",
+          "minWidth": "100%",
+          "position": "relative",
+          "transition": "all 0.25s ease",
+        },
+        "_len": 164,
+        "_name": "toggleWrapper_k9imx0",
+      },
+      "wrapperOff": Object {
+        "_definition": Object {},
+        "_len": 2,
+        "_name": "wrapperOff_3hmsj",
+      },
+      "wrapperOn": Object {
+        "_definition": Object {
+          "border": "2px solid #33abf9",
+        },
+        "_len": 30,
+        "_name": "wrapperOn_eu2ngt",
+      },
+    }
+  }
+  theme={
+    Object {
+      "color": Object {
+        "background": "#fff",
+        "buttonBG": "#0c3a69",
+        "disabledButton": "#c6c6c6",
+        "highlight": "#2f81d6",
+        "primary": "#33abf9",
+        "secondary": "#74828F",
+        "standOut": "#C25B56",
+        "text": "#FEF6EB",
+      },
+    }
+  }
+  toggleOn={true}
+/>
+`;

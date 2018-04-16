@@ -4,21 +4,18 @@ import Logo from '../logo/logo';
 import Toolbar from '../toolbar';
 import SearchBox from '../../containers/searchbox';
 import Popup from '../../containers/settings-popup';
-import { withStyles } from '../../common/withStyles';
-import { SpreadClassNames } from '../../common/helpers';
+import { withStyles, css } from '../../common/withStyles';
 import HeaderStyles from './styles';
-import Options from '../options';
 
 const Header = ({
   styles, engine, selectSearchEngine, settingsOpen, openSettings,
 }) => {
-  const { appHeader } = SpreadClassNames(styles);
   return (
-    <header {...appHeader}>
-      <Logo text="Bimba" image="logo" />
+    <header {...css(styles.appHeader)}>
+      <div {...css(styles.logoWrapper)}>
+        <Logo text="Bimba" image="" />
+      </div>
       <SearchBox selectSearchEngine={selectSearchEngine} engine={engine} />
-      <Options />
-      <Toolbar items={[{ name: 'settings', icon: 'cog' }]} openSettings={openSettings} />
       <Popup isOpen={settingsOpen} />
     </header>);
 };
